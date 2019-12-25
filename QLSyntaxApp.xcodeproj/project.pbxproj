@@ -12,7 +12,36 @@
 		8C225A6C23B3D46B0091D43C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8C225A6B23B3D46B0091D43C /* Assets.xcassets */; };
 		8C225A6F23B3D46B0091D43C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8C225A6E23B3D46B0091D43C /* Preview Assets.xcassets */; };
 		8C225A7223B3D46B0091D43C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8C225A7023B3D46B0091D43C /* Main.storyboard */; };
+		8C9B6B7D23B3D8F900280078 /* Quartz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C9B6B7C23B3D8F900280078 /* Quartz.framework */; };
+		8C9B6B8023B3D8F900280078 /* PreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9B6B7F23B3D8F900280078 /* PreviewViewController.swift */; };
+		8C9B6B8323B3D8F900280078 /* PreviewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8C9B6B8123B3D8F900280078 /* PreviewViewController.xib */; };
+		8C9B6B8823B3D8F900280078 /* QLSyntaxPlugin.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 8C9B6B7A23B3D8F900280078 /* QLSyntaxPlugin.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		8C9B6B8E23B3D91200280078 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C9B6B8D23B3D91200280078 /* WebKit.framework */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		8C9B6B8623B3D8F900280078 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8C225A5C23B3D4690091D43C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8C9B6B7923B3D8F900280078;
+			remoteInfo = QLSyntaxPlugin;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		8C9B6B8923B3D8F900280078 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				8C9B6B8823B3D8F900280078 /* QLSyntaxPlugin.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		8C225A6423B3D4690091D43C /* QLSyntaxApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QLSyntaxApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -23,6 +52,13 @@
 		8C225A7123B3D46B0091D43C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8C225A7323B3D46B0091D43C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8C225A7423B3D46B0091D43C /* QLSyntaxApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = QLSyntaxApp.entitlements; sourceTree = "<group>"; };
+		8C9B6B7A23B3D8F900280078 /* QLSyntaxPlugin.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = QLSyntaxPlugin.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		8C9B6B7C23B3D8F900280078 /* Quartz.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quartz.framework; path = System/Library/Frameworks/Quartz.framework; sourceTree = SDKROOT; };
+		8C9B6B7F23B3D8F900280078 /* PreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewViewController.swift; sourceTree = "<group>"; };
+		8C9B6B8223B3D8F900280078 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/PreviewViewController.xib; sourceTree = "<group>"; };
+		8C9B6B8423B3D8F900280078 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8C9B6B8523B3D8F900280078 /* QLSyntaxPlugin.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = QLSyntaxPlugin.entitlements; sourceTree = "<group>"; };
+		8C9B6B8D23B3D91200280078 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,6 +69,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		8C9B6B7723B3D8F900280078 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8C9B6B8E23B3D91200280078 /* WebKit.framework in Frameworks */,
+				8C9B6B7D23B3D8F900280078 /* Quartz.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -40,6 +85,8 @@
 			isa = PBXGroup;
 			children = (
 				8C225A6623B3D4690091D43C /* QLSyntaxApp */,
+				8C9B6B7E23B3D8F900280078 /* QLSyntaxPlugin */,
+				8C9B6B7B23B3D8F900280078 /* Frameworks */,
 				8C225A6523B3D4690091D43C /* Products */,
 			);
 			sourceTree = "<group>";
@@ -48,6 +95,7 @@
 			isa = PBXGroup;
 			children = (
 				8C225A6423B3D4690091D43C /* QLSyntaxApp.app */,
+				8C9B6B7A23B3D8F900280078 /* QLSyntaxPlugin.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -74,6 +122,26 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		8C9B6B7B23B3D8F900280078 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8C9B6B8D23B3D91200280078 /* WebKit.framework */,
+				8C9B6B7C23B3D8F900280078 /* Quartz.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		8C9B6B7E23B3D8F900280078 /* QLSyntaxPlugin */ = {
+			isa = PBXGroup;
+			children = (
+				8C9B6B7F23B3D8F900280078 /* PreviewViewController.swift */,
+				8C9B6B8123B3D8F900280078 /* PreviewViewController.xib */,
+				8C9B6B8423B3D8F900280078 /* Info.plist */,
+				8C9B6B8523B3D8F900280078 /* QLSyntaxPlugin.entitlements */,
+			);
+			path = QLSyntaxPlugin;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -84,15 +152,34 @@
 				8C225A6023B3D4690091D43C /* Sources */,
 				8C225A6123B3D4690091D43C /* Frameworks */,
 				8C225A6223B3D4690091D43C /* Resources */,
+				8C9B6B8923B3D8F900280078 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				8C9B6B8723B3D8F900280078 /* PBXTargetDependency */,
 			);
 			name = QLSyntaxApp;
 			productName = QLSyntaxApp;
 			productReference = 8C225A6423B3D4690091D43C /* QLSyntaxApp.app */;
 			productType = "com.apple.product-type.application";
+		};
+		8C9B6B7923B3D8F900280078 /* QLSyntaxPlugin */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8C9B6B8C23B3D8F900280078 /* Build configuration list for PBXNativeTarget "QLSyntaxPlugin" */;
+			buildPhases = (
+				8C9B6B7623B3D8F900280078 /* Sources */,
+				8C9B6B7723B3D8F900280078 /* Frameworks */,
+				8C9B6B7823B3D8F900280078 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = QLSyntaxPlugin;
+			productName = QLSyntaxPlugin;
+			productReference = 8C9B6B7A23B3D8F900280078 /* QLSyntaxPlugin.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -105,6 +192,9 @@
 				ORGANIZATIONNAME = "Bastian Rinsche";
 				TargetAttributes = {
 					8C225A6323B3D4690091D43C = {
+						CreatedOnToolsVersion = 11.3;
+					};
+					8C9B6B7923B3D8F900280078 = {
 						CreatedOnToolsVersion = 11.3;
 					};
 				};
@@ -123,6 +213,7 @@
 			projectRoot = "";
 			targets = (
 				8C225A6323B3D4690091D43C /* QLSyntaxApp */,
+				8C9B6B7923B3D8F900280078 /* QLSyntaxPlugin */,
 			);
 		};
 /* End PBXProject section */
@@ -138,6 +229,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		8C9B6B7823B3D8F900280078 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8C9B6B8323B3D8F900280078 /* PreviewViewController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -150,7 +249,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		8C9B6B7623B3D8F900280078 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8C9B6B8023B3D8F900280078 /* PreviewViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		8C9B6B8723B3D8F900280078 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8C9B6B7923B3D8F900280078 /* QLSyntaxPlugin */;
+			targetProxy = 8C9B6B8623B3D8F900280078 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		8C225A7023B3D46B0091D43C /* Main.storyboard */ = {
@@ -159,6 +274,14 @@
 				8C225A7123B3D46B0091D43C /* Base */,
 			);
 			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		8C9B6B8123B3D8F900280078 /* PreviewViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8C9B6B8223B3D8F900280078 /* Base */,
+			);
+			name = PreviewViewController.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -280,6 +403,7 @@
 		8C225A7823B3D46B0091D43C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = QLSyntaxApp/QLSyntaxApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
@@ -303,6 +427,7 @@
 		8C225A7923B3D46B0091D43C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = QLSyntaxApp/QLSyntaxApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
@@ -319,6 +444,46 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				PRODUCT_BUNDLE_IDENTIFIER = de.bastianrinsche.QLSyntaxApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		8C9B6B8A23B3D8F900280078 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = QLSyntaxPlugin/QLSyntaxPlugin.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 77D3N2852M;
+				ENABLE_HARDENED_RUNTIME = YES;
+				INFOPLIST_FILE = QLSyntaxPlugin/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = de.bastianrinsche.QLSyntaxApp.QLSyntaxPlugin;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		8C9B6B8B23B3D8F900280078 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = QLSyntaxPlugin/QLSyntaxPlugin.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 77D3N2852M;
+				ENABLE_HARDENED_RUNTIME = YES;
+				INFOPLIST_FILE = QLSyntaxPlugin/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = de.bastianrinsche.QLSyntaxApp.QLSyntaxPlugin;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
@@ -340,6 +505,15 @@
 			buildConfigurations = (
 				8C225A7823B3D46B0091D43C /* Debug */,
 				8C225A7923B3D46B0091D43C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8C9B6B8C23B3D8F900280078 /* Build configuration list for PBXNativeTarget "QLSyntaxPlugin" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8C9B6B8A23B3D8F900280078 /* Debug */,
+				8C9B6B8B23B3D8F900280078 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
