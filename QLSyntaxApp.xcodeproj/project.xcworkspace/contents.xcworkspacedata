@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:QLSyntaxApp.xcodeproj">
+      location = "group:../qlsyntax">
+   </FileRef>
+   <FileRef
+      location = "self:">
    </FileRef>
 </Workspace>

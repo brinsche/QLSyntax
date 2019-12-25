@@ -69,6 +69,7 @@
 		8C9B6B8D23B3D91200280078 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		8C9B6B9523B3DFF700280078 /* libresolv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libresolv.tbd; path = usr/lib/libresolv.tbd; sourceTree = SDKROOT; };
 		8C9B6B9723B3E0F300280078 /* qlsyntax.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = qlsyntax.h; sourceTree = "<group>"; };
+		8C9B6B9C23B3FE9500280078 /* qlsyntax */ = {isa = PBXFileReference; lastKnownFileType = folder; path = qlsyntax; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +96,7 @@
 		8C225A5B23B3D4690091D43C = {
 			isa = PBXGroup;
 			children = (
+				8C9B6B9C23B3FE9500280078 /* qlsyntax */,
 				8C225A6623B3D4690091D43C /* QLSyntaxApp */,
 				8C9B6B7E23B3D8F900280078 /* QLSyntaxPlugin */,
 				8C9B6B7B23B3D8F900280078 /* Frameworks */,
