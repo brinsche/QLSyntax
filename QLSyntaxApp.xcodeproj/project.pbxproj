@@ -17,6 +17,7 @@
 		8C9B6B8323B3D8F900280078 /* PreviewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8C9B6B8123B3D8F900280078 /* PreviewViewController.xib */; };
 		8C9B6B8823B3D8F900280078 /* QLSyntaxPlugin.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 8C9B6B7A23B3D8F900280078 /* QLSyntaxPlugin.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		8C9B6B8E23B3D91200280078 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C9B6B8D23B3D91200280078 /* WebKit.framework */; };
+		8C9B6B9623B3DFF700280078 /* libresolv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C9B6B9523B3DFF700280078 /* libresolv.tbd */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -26,6 +27,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = 8C9B6B7923B3D8F900280078;
 			remoteInfo = QLSyntaxPlugin;
+		};
+		8C9B6B9323B3DF8500280078 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8C225A5C23B3D4690091D43C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8C9B6B8F23B3DDA700280078;
+			remoteInfo = qlsyntax;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -59,6 +67,8 @@
 		8C9B6B8423B3D8F900280078 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8C9B6B8523B3D8F900280078 /* QLSyntaxPlugin.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = QLSyntaxPlugin.entitlements; sourceTree = "<group>"; };
 		8C9B6B8D23B3D91200280078 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
+		8C9B6B9523B3DFF700280078 /* libresolv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libresolv.tbd; path = usr/lib/libresolv.tbd; sourceTree = SDKROOT; };
+		8C9B6B9723B3E0F300280078 /* qlsyntax.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = qlsyntax.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +83,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8C9B6B9623B3DFF700280078 /* libresolv.tbd in Frameworks */,
 				8C9B6B8E23B3D91200280078 /* WebKit.framework in Frameworks */,
 				8C9B6B7D23B3D8F900280078 /* Quartz.framework in Frameworks */,
 			);
@@ -125,6 +136,7 @@
 		8C9B6B7B23B3D8F900280078 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8C9B6B9523B3DFF700280078 /* libresolv.tbd */,
 				8C9B6B8D23B3D91200280078 /* WebKit.framework */,
 				8C9B6B7C23B3D8F900280078 /* Quartz.framework */,
 			);
@@ -138,11 +150,29 @@
 				8C9B6B8123B3D8F900280078 /* PreviewViewController.xib */,
 				8C9B6B8423B3D8F900280078 /* Info.plist */,
 				8C9B6B8523B3D8F900280078 /* QLSyntaxPlugin.entitlements */,
+				8C9B6B9723B3E0F300280078 /* qlsyntax.h */,
 			);
 			path = QLSyntaxPlugin;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
+
+/* Begin PBXLegacyTarget section */
+		8C9B6B8F23B3DDA700280078 /* qlsyntax */ = {
+			isa = PBXLegacyTarget;
+			buildArgumentsString = "$(SRCROOT)/build-rust-xcode.sh";
+			buildConfigurationList = 8C9B6B9023B3DDA700280078 /* Build configuration list for PBXLegacyTarget "qlsyntax" */;
+			buildPhases = (
+			);
+			buildToolPath = /bin/bash;
+			buildWorkingDirectory = "$(PROJECT_DIR)/qlsyntax";
+			dependencies = (
+			);
+			name = qlsyntax;
+			passBuildSettingsInEnvironment = 1;
+			productName = qlsyntax;
+		};
+/* End PBXLegacyTarget section */
 
 /* Begin PBXNativeTarget section */
 		8C225A6323B3D4690091D43C /* QLSyntaxApp */ = {
@@ -175,6 +205,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				8C9B6B9423B3DF8500280078 /* PBXTargetDependency */,
 			);
 			name = QLSyntaxPlugin;
 			productName = QLSyntaxPlugin;
@@ -196,6 +227,10 @@
 					};
 					8C9B6B7923B3D8F900280078 = {
 						CreatedOnToolsVersion = 11.3;
+						LastSwiftMigration = 1130;
+					};
+					8C9B6B8F23B3DDA700280078 = {
+						CreatedOnToolsVersion = 11.3;
 					};
 				};
 			};
@@ -214,6 +249,7 @@
 			targets = (
 				8C225A6323B3D4690091D43C /* QLSyntaxApp */,
 				8C9B6B7923B3D8F900280078 /* QLSyntaxPlugin */,
+				8C9B6B8F23B3DDA700280078 /* qlsyntax */,
 			);
 		};
 /* End PBXProject section */
@@ -264,6 +300,11 @@
 			isa = PBXTargetDependency;
 			target = 8C9B6B7923B3D8F900280078 /* QLSyntaxPlugin */;
 			targetProxy = 8C9B6B8623B3D8F900280078 /* PBXContainerItemProxy */;
+		};
+		8C9B6B9423B3DF8500280078 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8C9B6B8F23B3DDA700280078 /* qlsyntax */;
+			targetProxy = 8C9B6B9323B3DF8500280078 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -451,6 +492,7 @@
 		8C9B6B8A23B3D8F900280078 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = QLSyntaxPlugin/QLSyntaxPlugin.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 77D3N2852M;
@@ -461,9 +503,13 @@
 					"@executable_path/../Frameworks",
 					"@executable_path/../../../../Frameworks",
 				);
+				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/qlsyntax/target/debug";
+				OTHER_LDFLAGS = "-lqlsyntax";
 				PRODUCT_BUNDLE_IDENTIFIER = de.bastianrinsche.QLSyntaxApp.QLSyntaxPlugin;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = QLSyntaxPlugin/qlsyntax.h;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
@@ -471,6 +517,7 @@
 		8C9B6B8B23B3D8F900280078 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = QLSyntaxPlugin/QLSyntaxPlugin.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 77D3N2852M;
@@ -481,10 +528,40 @@
 					"@executable_path/../Frameworks",
 					"@executable_path/../../../../Frameworks",
 				);
+				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/qlsyntax/target/release";
+				OTHER_LDFLAGS = "-lqlsyntax";
 				PRODUCT_BUNDLE_IDENTIFIER = de.bastianrinsche.QLSyntaxApp.QLSyntaxPlugin;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = QLSyntaxPlugin/qlsyntax.h;
 				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		8C9B6B9123B3DDA700280078 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEBUGGING_SYMBOLS = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = 77D3N2852M;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		8C9B6B9223B3DDA700280078 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 77D3N2852M;
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
 		};
@@ -514,6 +591,15 @@
 			buildConfigurations = (
 				8C9B6B8A23B3D8F900280078 /* Debug */,
 				8C9B6B8B23B3D8F900280078 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8C9B6B9023B3DDA700280078 /* Build configuration list for PBXLegacyTarget "qlsyntax" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8C9B6B9123B3DDA700280078 /* Debug */,
+				8C9B6B9223B3DDA700280078 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

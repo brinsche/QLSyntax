@@ -1,0 +1,14 @@
+[package]
+name = "qlsyntax"
+version = "0.1.0"
+authors = ["Bastian Rinsche <bastian.rinsche@gmail.com>"]
+edition = "2018"
+
+[lib]
+name = "qlsyntax"
+crate-type = ["staticlib"]
+
+[profile.release]
+lto = true
+
+[dependencies]

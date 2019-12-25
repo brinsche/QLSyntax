@@ -43,7 +43,9 @@ class PreviewViewController: NSViewController, QLPreviewingController {
         
         // Call the completion handler so Quick Look knows that the preview is fully loaded.
         // Quick Look will display a loading spinner while the completion handler is not called.
-        webView.loadHTMLString("<html><body><h1>Hello World!</h1></body></html>", baseURL: nil)
+        let rust_hello = String(cString: hello_world()!)
+        webView.loadHTMLString(rust_hello, baseURL: nil)
+        
         handler(nil)
     }
 }
