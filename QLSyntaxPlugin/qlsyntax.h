@@ -6,4 +6,4 @@
 //  Copyright © 2019 Bastian Rinsche. All rights reserved.
 //
 
-const char* hello_world(void);
+const char* syntax_highlight(const char* path);
