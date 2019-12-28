@@ -43,11 +43,12 @@ class PreviewViewController: NSViewController, QLPreviewingController {
         
         // Call the completion handler so Quick Look knows that the preview is fully loaded.
         // Quick Look will display a loading spinner while the completion handler is not called.
-        let font = "mononoki".cString(using: .utf8)
-        let fontSize = "14".cString(using: .utf8)
-        let themeName = "base16-eighties.dark".cString(using: .utf8)
-        let themeDirectory = "~/.config/qlsyntax/themes".cString(using: .utf8)
-        let syntaxDirectory = "~/.config/qlsyntax/syntaxes".cString(using: .utf8)
+        let defaults = UserDefaults.init(suiteName: QLPreferences.suite)!
+        let font = (defaults.string(forKey: QLPreferences.fontFamily) ?? QLPreferences.defaultFont).cString(using: .utf8)
+        let fontSize = (defaults.string(forKey: QLPreferences.fontSize) ?? QLPreferences.defaultFontSize).cString(using: .utf8)
+        let themeName = (defaults.string(forKey: QLPreferences.themeName) ?? QLPreferences.defaultThemeName).cString(using: .utf8)
+        let themeDirectory = (defaults.string(forKey: QLPreferences.themeDirectory) ?? QLPreferences.defaultThemeDirectory).cString(using: .utf8)
+        let syntaxDirectory = (defaults.string(forKey: QLPreferences.syntaxDirectory) ?? QLPreferences.defaultSyntaxDirectory).cString(using: .utf8)
         
         let path = url.path.cString(using: .utf8)
         let result = String(cString: syntax_highlight(path, font, fontSize, themeName, themeDirectory, syntaxDirectory))
