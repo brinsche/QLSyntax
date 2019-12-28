@@ -43,8 +43,14 @@ class PreviewViewController: NSViewController, QLPreviewingController {
         
         // Call the completion handler so Quick Look knows that the preview is fully loaded.
         // Quick Look will display a loading spinner while the completion handler is not called.
-        let args = url.path.cString(using: .utf8)
-        let result = String(cString: syntax_highlight(args))
+        let font = "mononoki".cString(using: .utf8)
+        let fontSize = "14".cString(using: .utf8)
+        let themeName = "base16-eighties.dark".cString(using: .utf8)
+        let themeDirectory = "~/.config/qlsyntax/themes".cString(using: .utf8)
+        let syntaxDirectory = "~/.config/qlsyntax/syntaxes".cString(using: .utf8)
+        
+        let path = url.path.cString(using: .utf8)
+        let result = String(cString: syntax_highlight(path, font, fontSize, themeName, themeDirectory, syntaxDirectory))
         webView.loadHTMLString(result, baseURL: nil)
         
         handler(nil)

@@ -8,10 +8,42 @@ use syntect::html::highlighted_html_for_string;
 use syntect::parsing::SyntaxSet;
 
 #[no_mangle]
-pub extern "C" fn syntax_highlight(path: *const c_char) -> *const c_char {
-    let path = unsafe { CStr::from_ptr(path) };
-    let path = path.to_str().expect("Converting path failed");
+pub extern "C" fn syntax_highlight(
+    path: *const c_char,
+    font: *const c_char,
+    font_size: *const c_char,
+    theme_name: *const c_char,
+    theme_directory: *const c_char,
+    syntax_directory: *const c_char,
+) -> *const c_char {
+    let path = unsafe {
+        CStr::from_ptr(path)
+            .to_str()
+            .expect("Converting path failed")
+    };
     let path = Path::new(&path);
+
+    let font = unsafe { CStr::from_ptr(font).to_str().expect("Invalid font arg") };
+    let font_size = unsafe {
+        CStr::from_ptr(font_size)
+            .to_str()
+            .expect("Invalid font size arg")
+    };
+    let theme_name = unsafe {
+        CStr::from_ptr(theme_name)
+            .to_str()
+            .expect("Invalid theme name arg")
+    };
+    let theme_dir = unsafe {
+        CStr::from_ptr(theme_directory)
+            .to_str()
+            .expect("Invalid theme directory arg")
+    };
+    let syntax_dir = unsafe {
+        CStr::from_ptr(syntax_directory)
+            .to_str()
+            .expect("Invalid syntax directory arg")
+    };
 
     let buffer = read_to_string(path).expect("Failed to read file");
     let mut html = String::new();
@@ -20,7 +52,7 @@ pub extern "C" fn syntax_highlight(path: *const c_char) -> *const c_char {
     let theme_set = ThemeSet::load_defaults();
     let theme = theme_set
         .themes
-        .get("base16-eighties.dark")
+        .get(theme_name)
         .expect("Failed getting theme");
 
     let syntax = syntax_set
@@ -32,8 +64,8 @@ pub extern "C" fn syntax_highlight(path: *const c_char) -> *const c_char {
     let fg = theme.settings.foreground.unwrap_or(Color::BLACK);
 
     html.push_str(&format!(
-        "<head><style> pre {{ font-size: {}px; font-family: {}; }} </style></head>",
-        "14", "mononoki"
+        "<head><style> pre {{ font-family: {}; font-size: {}px; }} </style></head>",
+        font, font_size
     ));
     html.push_str(&format!(
         "<body style=\"background-color:#{:02x}{:02x}{:02x}; white-space: pre-wrap; font-size: {}px; font-family: {}; color:#{:02x}{:02x}{:02x};\">",

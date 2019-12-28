@@ -6,4 +6,9 @@
 //  Copyright © 2019 Bastian Rinsche. All rights reserved.
 //
 
-const char* syntax_highlight(const char* path);
+const char* syntax_highlight(const char* path,
+                             const char* font,
+                             const char* font_size,
+                             const char* theme_name,
+                             const char* theme_directory,
+                             const char* syntax_directory);
