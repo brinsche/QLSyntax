@@ -9,9 +9,16 @@
 import SwiftUI
 
 struct ContentView: View {
+    @ObservedObject var preferences = QLPreferences()
+
     var body: some View {
-        Text("Hello, World!")
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
+        VStack {
+            TextField("fontFamily", text: $preferences.fontFamily)
+            TextField("fontSize", text: $preferences.fontSize)
+            TextField("themeName", text: $preferences.themeName)
+            TextField("themeDirectory", text: $preferences.themeDirectory)
+            TextField("syntaxDirectory", text: $preferences.syntaxDirectory)
+        }.frame(maxWidth: .infinity, maxHeight: .infinity)
     }
 }
 

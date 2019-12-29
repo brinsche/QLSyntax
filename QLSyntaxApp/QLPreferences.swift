@@ -5,8 +5,10 @@
 //  Created by Bastian Rinsche on 28.12.19.
 //  Copyright © 2019 Bastian Rinsche. All rights reserved.
 //
+import Combine
+import Foundation
 
-class QLPreferences {
+final class QLPreferences: ObservableObject {
     static let suite = "de.brinsche.QLSyntax.Defaults"
     static let fontFamily = "fontFamily"
     static let fontSize = "fontSize"
@@ -19,4 +21,43 @@ class QLPreferences {
     static let defaultThemeName = "base16-eighties.dark" // TODO Replace with custom XCode Light/Dark Theme
     static let defaultThemeDirectory = "~/.config/qlsyntax/themes"
     static let defaultSyntaxDirectory = "~/.config/qlsyntax/syntaxes"
+    
+    let objectWillChange = PassthroughSubject<Void, Never>()
+    
+    @UserDefault(QLPreferences.fontFamily, defaultValue: QLPreferences.defaultFont)
+    var fontFamily: String { willSet { objectWillChange.send() }}
+    
+    @UserDefault(QLPreferences.fontSize, defaultValue: QLPreferences.defaultFontSize)
+    var fontSize: String { willSet { objectWillChange.send() }}
+    
+    @UserDefault(QLPreferences.themeName, defaultValue: QLPreferences.defaultThemeName)
+    var themeName: String { willSet { objectWillChange.send() }}
+    
+    @UserDefault(QLPreferences.themeDirectory, defaultValue: QLPreferences.defaultThemeDirectory)
+    var themeDirectory: String { willSet { objectWillChange.send() }}
+    
+    @UserDefault(QLPreferences.syntaxDirectory, defaultValue: QLPreferences.defaultSyntaxDirectory)
+    var syntaxDirectory: String { willSet { objectWillChange.send() }}
+}
+
+@propertyWrapper
+struct UserDefault<T> {
+    let defaults: UserDefaults
+    let key: String
+    let defaultValue: T
+
+    init(_ key: String, defaultValue: T) {
+        self.defaults = UserDefaults.init(suiteName: QLPreferences.suite)!
+        self.key = key
+        self.defaultValue = defaultValue
+    }
+
+    var wrappedValue: T {
+        get {
+            return defaults.object(forKey: key) as? T ?? defaultValue
+        }
+        set {
+            defaults.set(newValue, forKey: key)
+        }
+    }
 }
