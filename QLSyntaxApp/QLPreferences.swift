@@ -19,8 +19,6 @@ final class QLPreferences: ObservableObject {
     static let defaultFont = "Menlo" // SF Mono is not accessible for Webkit
     static let defaultFontSize = "12"
     static let defaultThemeName = "base16-eighties.dark" // TODO Replace with custom XCode Light/Dark Theme
-    static let defaultThemeDirectory = "~/.config/qlsyntax/themes"
-    static let defaultSyntaxDirectory = "~/.config/qlsyntax/syntaxes"
     
     let objectWillChange = PassthroughSubject<Void, Never>()
     
@@ -32,12 +30,6 @@ final class QLPreferences: ObservableObject {
     
     @UserDefault(QLPreferences.themeName, defaultValue: QLPreferences.defaultThemeName)
     var themeName: String { willSet { objectWillChange.send() }}
-    
-    @UserDefault(QLPreferences.themeDirectory, defaultValue: QLPreferences.defaultThemeDirectory)
-    var themeDirectory: String { willSet { objectWillChange.send() }}
-    
-    @UserDefault(QLPreferences.syntaxDirectory, defaultValue: QLPreferences.defaultSyntaxDirectory)
-    var syntaxDirectory: String { willSet { objectWillChange.send() }}
 }
 
 @propertyWrapper

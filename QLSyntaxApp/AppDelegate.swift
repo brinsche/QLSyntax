@@ -28,6 +28,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         window.setFrameAutosaveName("Main Window")
         window.contentView = NSHostingView(rootView: contentView)
         window.makeKeyAndOrderFront(nil)
+        
+        let themeDirectory = FileManager.themeDirectory
+        try! FileManager.default.createDirectory(at: themeDirectory, withIntermediateDirectories: true, attributes: nil)
+
+        let syntaxDirectory = FileManager.syntaxDirectory
+        try! FileManager.default.createDirectory(at: syntaxDirectory, withIntermediateDirectories: true, attributes: nil)
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {

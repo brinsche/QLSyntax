@@ -18,6 +18,8 @@
 		8C9B6B8823B3D8F900280078 /* QLSyntaxPlugin.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 8C9B6B7A23B3D8F900280078 /* QLSyntaxPlugin.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		8C9B6B8E23B3D91200280078 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C9B6B8D23B3D91200280078 /* WebKit.framework */; };
 		8C9B6B9623B3DFF700280078 /* libresolv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C9B6B9523B3DFF700280078 /* libresolv.tbd */; };
+		8C9EC1C923C24ECF00B6B272 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9EC1C823C24ECF00B6B272 /* Extensions.swift */; };
+		8C9EC1CA23C24ECF00B6B272 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9EC1C823C24ECF00B6B272 /* Extensions.swift */; };
 		8CC04FF023B6EF73001D91F0 /* QLPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CC04FEF23B6EF73001D91F0 /* QLPreferences.swift */; };
 		8CC04FF123B6EF73001D91F0 /* QLPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CC04FEF23B6EF73001D91F0 /* QLPreferences.swift */; };
 /* End PBXBuildFile section */
@@ -72,6 +74,7 @@
 		8C9B6B9523B3DFF700280078 /* libresolv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libresolv.tbd; path = usr/lib/libresolv.tbd; sourceTree = SDKROOT; };
 		8C9B6B9723B3E0F300280078 /* qlsyntax.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = qlsyntax.h; sourceTree = "<group>"; };
 		8C9B6B9C23B3FE9500280078 /* qlsyntax */ = {isa = PBXFileReference; lastKnownFileType = folder; path = qlsyntax; sourceTree = "<group>"; };
+		8C9EC1C823C24ECF00B6B272 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		8CC04FEF23B6EF73001D91F0 /* QLPreferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QLPreferences.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -122,6 +125,7 @@
 				8C225A6723B3D4690091D43C /* AppDelegate.swift */,
 				8C225A6923B3D4690091D43C /* ContentView.swift */,
 				8CC04FEF23B6EF73001D91F0 /* QLPreferences.swift */,
+				8C9EC1C823C24ECF00B6B272 /* Extensions.swift */,
 				8C225A6B23B3D46B0091D43C /* Assets.xcassets */,
 				8C225A7023B3D46B0091D43C /* Main.storyboard */,
 				8C225A7323B3D46B0091D43C /* Info.plist */,
@@ -289,6 +293,7 @@
 				8C225A6A23B3D4690091D43C /* ContentView.swift in Sources */,
 				8C225A6823B3D4690091D43C /* AppDelegate.swift in Sources */,
 				8CC04FF023B6EF73001D91F0 /* QLPreferences.swift in Sources */,
+				8C9EC1C923C24ECF00B6B272 /* Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -297,6 +302,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8CC04FF123B6EF73001D91F0 /* QLPreferences.swift in Sources */,
+				8C9EC1CA23C24ECF00B6B272 /* Extensions.swift in Sources */,
 				8C9B6B8023B3D8F900280078 /* PreviewViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

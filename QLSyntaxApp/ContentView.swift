@@ -16,8 +16,18 @@ struct ContentView: View {
             TextField("fontFamily", text: $preferences.fontFamily)
             TextField("fontSize", text: $preferences.fontSize)
             TextField("themeName", text: $preferences.themeName)
-            TextField("themeDirectory", text: $preferences.themeDirectory)
-            TextField("syntaxDirectory", text: $preferences.syntaxDirectory)
+            Button(action: {
+                let themeDirectory = FileManager.themeDirectory.path
+                NSWorkspace.shared.openFile(themeDirectory, withApplication: "Finder")
+            }, label: {
+                Text("themeDirectory")
+            })
+            Button(action: {
+                let syntaxDirectory = FileManager.syntaxDirectory.path
+                NSWorkspace.shared.openFile(syntaxDirectory, withApplication: "Finder")
+            }, label: {
+                Text("syntaxDirectory")
+            })
         }.frame(maxWidth: .infinity, maxHeight: .infinity)
     }
 }

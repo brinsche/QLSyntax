@@ -47,8 +47,8 @@ class PreviewViewController: NSViewController, QLPreviewingController {
         let font = (defaults.string(forKey: QLPreferences.fontFamily) ?? QLPreferences.defaultFont).cString(using: .utf8)
         let fontSize = (defaults.string(forKey: QLPreferences.fontSize) ?? QLPreferences.defaultFontSize).cString(using: .utf8)
         let themeName = (defaults.string(forKey: QLPreferences.themeName) ?? QLPreferences.defaultThemeName).cString(using: .utf8)
-        let themeDirectory = (defaults.string(forKey: QLPreferences.themeDirectory) ?? QLPreferences.defaultThemeDirectory).cString(using: .utf8)
-        let syntaxDirectory = (defaults.string(forKey: QLPreferences.syntaxDirectory) ?? QLPreferences.defaultSyntaxDirectory).cString(using: .utf8)
+        let themeDirectory = FileManager.themeDirectory.path.cString(using: .utf8)
+        let syntaxDirectory = FileManager.syntaxDirectory.path.cString(using: .utf8)
         
         let path = url.path.cString(using: .utf8)
         let result = String(cString: syntax_highlight(path, font, fontSize, themeName, themeDirectory, syntaxDirectory))
