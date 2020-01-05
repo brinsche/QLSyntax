@@ -1,5 +1,6 @@
 use std::ffi::{CStr, CString};
 use std::fs::read_to_string;
+use std::io::Cursor;
 use std::os::raw::c_char;
 use std::path::Path;
 
@@ -48,13 +49,27 @@ pub extern "C" fn syntax_highlight(
     let buffer = read_to_string(path).expect("Failed to read file");
     let mut html = String::new();
 
-    let syntax_set = SyntaxSet::load_defaults_newlines();
-    let theme_set = ThemeSet::load_defaults();
+    let mut theme_set = ThemeSet::load_defaults();
+    let default_theme = ThemeSet::load_from_reader(&mut Cursor::new(
+        &include_bytes!("../res/XCodelike.tmTheme")[..],
+    )).unwrap();
+
+    theme_set
+        .add_from_folder(Path::new(&theme_dir))
+        .unwrap_or_else(|e| println!("{}",&e.to_string()));
+
     let theme = theme_set
         .themes
         .get(theme_name)
-        .expect("Failed getting theme");
+        .unwrap_or(&default_theme)
+        .clone();
 
+    let mut syntax_builder = SyntaxSet::load_defaults_newlines().into_builder();
+    syntax_builder
+        .add_from_folder(&Path::new(&syntax_dir), false)
+        .unwrap_or_else(|e| println!("{}",&e.to_string()));
+        
+    let syntax_set = syntax_builder.build();
     let syntax = syntax_set
         .find_syntax_for_file(path)
         .expect("Failed finding syntax for file")
