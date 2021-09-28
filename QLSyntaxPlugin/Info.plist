@@ -28,14 +28,17 @@
 		<dict>
 			<key>QLSupportedContentTypes</key>
 			<array>
+				<string>public.yaml</string>
 				<string>com.apple.applescript.script</string>
 				<string>com.apple.property-list</string>
 				<string>com.apple.xcode.bash-script</string>
 				<string>com.microsoft.c-sharp</string>
 				<string>com.sun.java-source</string>
-				<string>dyn.ah62d4rv4ge80e3pbr3v087pssu</string> 	<!-- .beancount -->
-				<string>dyn.ah62d4rv4ge81e62</string>				<!-- .rs -->
-				<string>dyn.ah62d4rv4ge81k55rru</string>			<!-- .toml -->
+				<string>dyn.ah62d4rv4ge80e3pbr3v087pssu</string>
+				<string>dyn.ah62d4rv4ge80q4pxra</string>
+				<string>dyn.ah62d4rv4ge80s52</string>
+				<string>dyn.ah62d4rv4ge81e62</string>
+				<string>dyn.ah62d4rv4ge81k55rru</string>
 				<string>org.iso.sql</string>
 				<string>org.lua.lua-source</string>
 				<string>public.bash-script</string>
@@ -56,6 +59,7 @@
 				<string>public.source-code</string>
 				<string>public.swift-source</string>
 				<string>public.xml</string>
+				<string>public.zsh-script</string>
 			</array>
 			<key>QLSupportsSearchableItems</key>
 			<false/>
