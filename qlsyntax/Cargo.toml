@@ -12,4 +12,4 @@ crate-type = ["staticlib"]
 lto = true
 
 [dependencies]
-syntect = "3.3"
+syntect = "4.6"
