@@ -11,7 +11,8 @@ import Quartz
 import WebKit
 
 class PreviewViewController: NSViewController, QLPreviewingController {
-    
+    let previewCompletionNotifier = PreviewCompletionNotifier()
+
     @IBOutlet var webView: WKWebView!
 
     override var nibName: NSNib.Name? {
@@ -21,6 +22,7 @@ class PreviewViewController: NSViewController, QLPreviewingController {
     override func loadView() {
         super.loadView()
         // Do any additional setup after loading the view.
+        webView.navigationDelegate = previewCompletionNotifier
     }
 
     /*
@@ -43,6 +45,8 @@ class PreviewViewController: NSViewController, QLPreviewingController {
         
         // Call the completion handler so Quick Look knows that the preview is fully loaded.
         // Quick Look will display a loading spinner while the completion handler is not called.
+        previewCompletionNotifier.setHandler(handler)
+
         let defaults = UserDefaults.init(suiteName: QLPreferences.suite)!
         let font = (defaults.string(forKey: QLPreferences.fontFamily) ?? QLPreferences.defaultFont).cString(using: .utf8)
         let fontSize = (defaults.string(forKey: QLPreferences.fontSize) ?? QLPreferences.defaultFontSize).cString(using: .utf8)
@@ -53,7 +57,21 @@ class PreviewViewController: NSViewController, QLPreviewingController {
         let path = url.path.cString(using: .utf8)
         let result = String(cString: syntax_highlight(path, font, fontSize, themeName, themeDirectory, syntaxDirectory))
         webView.loadHTMLString(result, baseURL: nil)
-        
-        handler(nil)
+    }
+}
+
+class PreviewCompletionNotifier: NSObject, WKNavigationDelegate {
+    var completionHandler: ((Error?) -> Void)?
+    
+    func setHandler(_ handler: @escaping (Error?) -> Void) {
+        self.completionHandler = handler
+    }
+    
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        completionHandler?(nil)
+    }
+    
+    func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
+        completionHandler?(nil)
     }
 }
