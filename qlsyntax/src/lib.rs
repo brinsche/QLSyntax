@@ -53,11 +53,11 @@ pub extern "C" fn syntax_highlight(
     let mut html = String::new();
     html.push_str(&format!(
         "<head><style> pre {{ font-family: {}; font-size: {}px; }} </style></head>",
-        font, font_size
+        font.as_str(), font_size.as_str()
     ));
     html.push_str(&format!(
         "<body style=\"background-color:#{:02x}{:02x}{:02x}; white-space: pre-wrap; font-size: {}px; font-family: {}; color:#{:02x}{:02x}{:02x};\">",
-        bg.r, bg.g, bg.b, font, font_size, fg.r, fg.g, fg.b,
+        bg.r, bg.g, bg.b, font.as_str(), font_size.as_str(), fg.r, fg.g, fg.b,
     ));
 
     html.push_str(&highlighted_html_for_string(
