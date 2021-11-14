@@ -84,7 +84,7 @@ pub extern "C" fn syntax_highlight(
     ));
     html.push_str(&format!(
         "<body style=\"background-color:#{:02x}{:02x}{:02x}; white-space: pre-wrap; font-size: {}px; font-family: {}; color:#{:02x}{:02x}{:02x};\">",
-        bg.r, bg.g, bg.b, "14", "mononoki", fg.r, fg.g, fg.b,
+        bg.r, bg.g, bg.b, font, font_size, fg.r, fg.g, fg.b,
     ));
 
     html.push_str(&highlighted_html_for_string(
