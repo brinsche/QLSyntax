@@ -50,13 +50,22 @@ class PreviewViewController: NSViewController, QLPreviewingController {
         let defaults = UserDefaults.init(suiteName: QLPreferences.suite)!
         let font = (defaults.string(forKey: QLPreferences.fontFamily) ?? QLPreferences.defaultFont).cString(using: .utf8)
         let fontSize = (defaults.string(forKey: QLPreferences.fontSize) ?? QLPreferences.defaultFontSize).cString(using: .utf8)
-        let themeName = (defaults.string(forKey: QLPreferences.themeName) ?? QLPreferences.defaultThemeName).cString(using: .utf8)
+        let normalthemeName = (defaults.string(forKey: QLPreferences.themeName) ?? QLPreferences.defaultThemeName).cString(using: .utf8)
+        let darkThemeName = (defaults.string(forKey: QLPreferences.darkThemeName) ?? QLPreferences.defaultThemeName).cString(using: .utf8)
+        let themeName = isDarkMode(view: self.view) ? darkThemeName : normalthemeName
         let themeDirectory = FileManager.themeDirectory.path.cString(using: .utf8)
         let syntaxDirectory = FileManager.syntaxDirectory.path.cString(using: .utf8)
         
         let path = url.path.cString(using: .utf8)
         let result = String(cString: syntax_highlight(path, font, fontSize, themeName, themeDirectory, syntaxDirectory))
         webView.loadHTMLString(result, baseURL: nil)
+    }
+    
+    func isDarkMode(view: NSView) -> Bool {
+        if #available(OSX 10.14, *) {
+            return view.effectiveAppearance.bestMatch(from: [.darkAqua, .aqua]) == .darkAqua
+        }
+        return false
     }
 }
 

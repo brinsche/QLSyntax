@@ -13,6 +13,7 @@ final class QLPreferences: ObservableObject {
     static let fontFamily = "fontFamily"
     static let fontSize = "fontSize"
     static let themeName = "themeName"
+    static let darkThemeName = "darkThemeName"
     static let themeDirectory = "themeDirectory"
     static let syntaxDirectory = "syntaxDirectory"
     
@@ -30,6 +31,9 @@ final class QLPreferences: ObservableObject {
     
     @UserDefault(QLPreferences.themeName, defaultValue: QLPreferences.defaultThemeName)
     var themeName: String { willSet { objectWillChange.send() }}
+    
+    @UserDefault(QLPreferences.darkThemeName, defaultValue: QLPreferences.defaultThemeName)
+    var darkThemeName: String { willSet { objectWillChange.send() }}
 }
 
 @propertyWrapper

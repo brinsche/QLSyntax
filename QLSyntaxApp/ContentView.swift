@@ -16,6 +16,7 @@ struct ContentView: View {
             TextField("fontFamily", text: $preferences.fontFamily)
             TextField("fontSize", text: $preferences.fontSize)
             TextField("themeName", text: $preferences.themeName)
+            TextField("darkThemeName", text: $preferences.darkThemeName)
             Button(action: {
                 let themeDirectory = FileManager.themeDirectory.path
                 NSWorkspace.shared.openFile(themeDirectory, withApplication: "Finder")
