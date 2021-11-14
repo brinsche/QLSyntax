@@ -13,3 +13,4 @@ lto = true
 
 [dependencies]
 syntect = "4.6"
+ffi-support = "0.4.4"

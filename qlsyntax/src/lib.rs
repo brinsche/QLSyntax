@@ -1,53 +1,25 @@
-use std::ffi::{CStr, CString};
 use std::fs::read_to_string;
 use std::io::Cursor;
 use std::os::raw::c_char;
 use std::path::Path;
 
+use ffi_support::{FfiStr, define_string_destructor, rust_string_to_c};
 use syntect::highlighting::{Color, ThemeSet};
 use syntect::html::highlighted_html_for_string;
 use syntect::parsing::SyntaxSet;
 
+define_string_destructor!(QlSyntax);
+
 #[no_mangle]
 pub extern "C" fn syntax_highlight(
-    path: *const c_char,
-    font: *const c_char,
-    font_size: *const c_char,
-    theme_name: *const c_char,
-    theme_directory: *const c_char,
-    syntax_directory: *const c_char,
+    path: FfiStr,
+    font: FfiStr,
+    font_size: FfiStr,
+    theme_name: FfiStr,
+    theme_directory: FfiStr,
+    syntax_directory: FfiStr,
 ) -> *const c_char {
-    let path = unsafe {
-        CStr::from_ptr(path)
-            .to_str()
-            .expect("Converting path failed")
-    };
-    let path = Path::new(&path);
-
-    let font = unsafe { CStr::from_ptr(font).to_str().expect("Invalid font arg") };
-    let font_size = unsafe {
-        CStr::from_ptr(font_size)
-            .to_str()
-            .expect("Invalid font size arg")
-    };
-    let theme_name = unsafe {
-        CStr::from_ptr(theme_name)
-            .to_str()
-            .expect("Invalid theme name arg")
-    };
-    let theme_dir = unsafe {
-        CStr::from_ptr(theme_directory)
-            .to_str()
-            .expect("Invalid theme directory arg")
-    };
-    let syntax_dir = unsafe {
-        CStr::from_ptr(syntax_directory)
-            .to_str()
-            .expect("Invalid syntax directory arg")
-    };
-
-    let buffer = read_to_string(path).expect("Failed to read file");
-    let mut html = String::new();
+    let buffer = read_to_string(path.as_str()).expect("Failed to read file");
 
     let mut theme_set = ThemeSet::load_defaults();
     let default_theme = ThemeSet::load_from_reader(&mut Cursor::new(
@@ -55,29 +27,30 @@ pub extern "C" fn syntax_highlight(
     )).unwrap();
 
     theme_set
-        .add_from_folder(Path::new(&theme_dir))
+        .add_from_folder(Path::new(theme_directory.as_str()))
         .unwrap_or_else(|e| println!("{}",&e.to_string()));
 
     let theme = theme_set
         .themes
-        .get(theme_name)
+        .get(theme_name.as_str())
         .unwrap_or(&default_theme)
         .clone();
 
     let mut syntax_builder = SyntaxSet::load_defaults_newlines().into_builder();
     syntax_builder
-        .add_from_folder(&Path::new(&syntax_dir), true)
-        .unwrap_or_else(|e| println!("{}",&e.to_string()));
+        .add_from_folder(&Path::new(syntax_directory.as_str()), true)
+        .unwrap_or_else(|e| println!("{}", &e.to_string()));
         
     let syntax_set = syntax_builder.build();
     let syntax = syntax_set
-        .find_syntax_for_file(path)
+        .find_syntax_for_file(path.as_str())
         .expect("Failed finding syntax for file")
         .unwrap_or_else(|| syntax_set.find_syntax_plain_text());
 
     let bg = theme.settings.background.unwrap_or(Color::WHITE);
     let fg = theme.settings.foreground.unwrap_or(Color::BLACK);
 
+    let mut html = String::new();
     html.push_str(&format!(
         "<head><style> pre {{ font-family: {}; font-size: {}px; }} </style></head>",
         font, font_size
@@ -94,9 +67,5 @@ pub extern "C" fn syntax_highlight(
         &theme,
     ));
 
-    let html_ffi = CString::new(html).expect("Failed converting result to CString");
-    let html_pointer = html_ffi.as_ptr();
-    std::mem::forget(html_ffi);
-
-    html_pointer
+    return rust_string_to_c(html)
 }
