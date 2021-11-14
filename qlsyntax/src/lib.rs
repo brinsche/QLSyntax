@@ -66,7 +66,7 @@ pub extern "C" fn syntax_highlight(
 
     let mut syntax_builder = SyntaxSet::load_defaults_newlines().into_builder();
     syntax_builder
-        .add_from_folder(&Path::new(&syntax_dir), false)
+        .add_from_folder(&Path::new(&syntax_dir), true)
         .unwrap_or_else(|e| println!("{}",&e.to_string()));
         
     let syntax_set = syntax_builder.build();
