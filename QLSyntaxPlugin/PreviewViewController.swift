@@ -57,8 +57,10 @@ class PreviewViewController: NSViewController, QLPreviewingController {
         let syntaxDirectory = FileManager.syntaxDirectory.path.cString(using: .utf8)
         
         let path = url.path.cString(using: .utf8)
-        let result = String(cString: syntax_highlight(path, font, fontSize, themeName, themeDirectory, syntaxDirectory))
-        webView.loadHTMLString(result, baseURL: nil)
+        let ffiResult = syntax_highlight(path, font, fontSize, themeName, themeDirectory, syntaxDirectory)!
+        let html = String(cString: ffiResult)
+        qlsyntax_destroy_string(ffiResult)
+        webView.loadHTMLString(html, baseURL: nil)
     }
     
     func isDarkMode(view: NSView) -> Bool {

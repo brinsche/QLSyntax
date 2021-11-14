@@ -12,3 +12,5 @@ const char* syntax_highlight(const char* path,
                              const char* theme_name,
                              const char* theme_directory,
                              const char* syntax_directory);
+
+void qlsyntax_destroy_string(const char* s);

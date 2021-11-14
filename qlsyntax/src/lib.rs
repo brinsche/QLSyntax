@@ -8,7 +8,7 @@ use syntect::highlighting::{Color, ThemeSet};
 use syntect::html::highlighted_html_for_string;
 use syntect::parsing::SyntaxSet;
 
-define_string_destructor!(QlSyntax);
+define_string_destructor!(qlsyntax_destroy_string);
 
 #[no_mangle]
 pub extern "C" fn syntax_highlight(
