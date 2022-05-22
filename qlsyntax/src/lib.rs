@@ -65,7 +65,7 @@ pub extern "C" fn syntax_highlight(
         &syntax_set,
         &syntax,
         &theme,
-    ));
+    ).unwrap());
 
     return rust_string_to_c(html)
 }
