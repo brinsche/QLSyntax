@@ -3,7 +3,7 @@ use std::io::Cursor;
 use std::os::raw::c_char;
 use std::path::Path;
 
-use ffi_support::{FfiStr, define_string_destructor, rust_string_to_c};
+use ffi_support::{define_string_destructor, rust_string_to_c, FfiStr};
 use syntect::highlighting::{Color, ThemeSet};
 use syntect::html::highlighted_html_for_string;
 use syntect::parsing::SyntaxSet;
@@ -24,11 +24,12 @@ pub extern "C" fn syntax_highlight(
     let mut theme_set = ThemeSet::load_defaults();
     let default_theme = ThemeSet::load_from_reader(&mut Cursor::new(
         &include_bytes!("../res/XCodelike.tmTheme")[..],
-    )).unwrap();
+    ))
+    .unwrap();
 
     theme_set
         .add_from_folder(Path::new(theme_directory.as_str()))
-        .unwrap_or_else(|e| println!("{}",&e.to_string()));
+        .unwrap_or_else(|e| println!("{}", &e.to_string()));
 
     let theme = theme_set
         .themes
@@ -40,7 +41,7 @@ pub extern "C" fn syntax_highlight(
     syntax_builder
         .add_from_folder(&Path::new(syntax_directory.as_str()), true)
         .unwrap_or_else(|e| println!("{}", &e.to_string()));
-        
+
     let syntax_set = syntax_builder.build();
     let syntax = syntax_set
         .find_syntax_for_file(path.as_str())
@@ -53,19 +54,28 @@ pub extern "C" fn syntax_highlight(
     let mut html = String::new();
     html.push_str(&format!(
         "<head><style> pre {{ font-family: {}; font-size: {}px; }} </style></head>",
-        font.as_str(), font_size.as_str()
+        font.as_str(),
+        font_size.as_str()
     ));
     html.push_str(&format!(
-        "<body style=\"background-color:#{:02x}{:02x}{:02x}; white-space: pre-wrap; font-size: {}px; font-family: {}; color:#{:02x}{:02x}{:02x};\">",
-        bg.r, bg.g, bg.b, font.as_str(), font_size.as_str(), fg.r, fg.g, fg.b,
+        r#"<body
+            style="background-color:#{:02x}{:02x}{:02x};
+            white-space: pre-wrap;
+            font-size: {}px;
+            font-family: {};
+            color:#{:02x}{:02x}{:02x};"
+        >"#,
+        bg.r,
+        bg.g,
+        bg.b,
+        font.as_str(),
+        font_size.as_str(),
+        fg.r,
+        fg.g,
+        fg.b,
     ));
 
-    html.push_str(&highlighted_html_for_string(
-        &buffer,
-        &syntax_set,
-        &syntax,
-        &theme,
-    ).unwrap());
+    html.push_str(&highlighted_html_for_string(&buffer, &syntax_set, &syntax, &theme).unwrap());
 
-    return rust_string_to_c(html)
+    return rust_string_to_c(html);
 }
