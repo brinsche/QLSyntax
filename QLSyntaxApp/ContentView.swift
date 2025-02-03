@@ -3,7 +3,7 @@
 //  QLSyntaxApp
 //
 //  Created by Bastian Rinsche on 25.12.19.
-//  Copyright © 2019 Bastian Rinsche. All rights reserved.
+//  Copyright © 2025 Bastian Rinsche. All rights reserved.
 //
 
 import SwiftUI
